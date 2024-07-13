@@ -49,3 +49,13 @@ if (array_key_exists($newname,$people)) {
 echo "</pre>";
 
 // ========================================task3====================
+$students = [
+            array("name"=>"yasmeen","age"=>"19","grade"=>"89%"),
+            array("name"=>"ameer","age"=>"20","grade"=>"91%"),
+    
+        ];
+        
+        array_push($students,array("name"=>"zaid","age"=>"22","grade"=>"60%"));
+        foreach($students as $student){
+            echo  "The Name is " . $student["name"]"The age is ".$student["age"] ."<br>" ."The Grade is ".$student["grade"]."<br>";
+        }
