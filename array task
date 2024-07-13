@@ -59,3 +59,48 @@ $students = [
         foreach($students as $student){
             echo  "The Name is " . $student["name"]"The age is ".$student["age"] ."<br>" ."The Grade is ".$student["grade"]."<br>";
         }
+
+
+===============================================================================================================
+
+        $numbers= [1,2,3,4,5,6,7,8,9];
+        array_push($numbers,10);
+
+        foreach($numbers as $x){
+            echo $x . ' ';
+        };
+        echo '<br>';
+        array_pop($numbers);
+        foreach($numbers as $x){
+            echo $x . ' ';
+        };
+        echo '<br>';
+
+        $values = array_values($numbers);
+        foreach($values as $x){
+            echo $x . ' ';
+        };
+        echo '<br>';
+
+        $keys = array_keys($numbers);
+        
+        echo 'Array keys :';
+        foreach($keys as $x){
+            echo $x . ' ';
+        };
+
+        echo '<br>';
+        echo count($numbers);
+        echo '<br>';
+        $secondArr =[11,12,13,14,15];
+        array_push($numbers,10);
+        echo "merged arrays : " ;
+        $mergedArr =array_merge($numbers,$secondArr);
+        foreach($mergedArr as $element){
+            echo $element . " ";
+        }
+
+        echo '<br>';
+        $search = array_search(5,$numbers);
+        echo $search;
+
