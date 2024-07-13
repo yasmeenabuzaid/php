@@ -1,0 +1,51 @@
+
+// =============================== task 1===============================
+
+// $fruits = array("Apple", "Orange", "Grapes", "Mango");  
+// foreach ($fruits as $fruit) {
+//     echo $fruit ;
+// }
+
+// $newFruit = "Banana";
+// $fruits[] = $newFruit;
+
+// echo "$newFruit";
+// foreach ($fruits as $fruit) {
+//     echo $fruit . "<br>";
+// }
+
+
+// $removedFruit = array_pop($fruits);
+
+// echo "$removedFruit";
+// foreach ($fruits as $fruit) {
+//     echo $fruit ;
+// }
+// =============================== task 2 ===============================
+echo "<pre>";
+$people=array(
+    "Ali" => 25,
+    "alaa" => 35,
+    "ameer" => 28,
+
+);
+
+
+array_push($people,"ahmad");
+$people["ahmad"] =   20;
+
+
+
+foreach($people as $name => $value) {
+    echo "$name $value";
+};
+
+$newname ="alaa";
+if (array_key_exists($newname,$people)) {
+    echo "$newname is done";
+} else {
+    echo "$newname is not done";
+};
+echo "</pre>";
+
+// ========================================task3====================
