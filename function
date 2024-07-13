@@ -1,0 +1,33 @@
+// task 1
+// function swap(&$x, &$y) {
+//     $temp = $x;
+//     $x = $y;
+//     $y = $temp;
+// }
+// $x = 12;
+// $y = 10;
+
+// echo "x = $x";
+// echo"<br>";
+// echo "y = $y";
+// echo"<br>";
+
+// swap($x, $y);
+// echo "x = $x<br>";
+// echo "y = $y<br>";
+
+// task2
+// $num = 3;
+// if($num %2 !=0 )
+//   echo ""
+// task 2
+// echo strrev("remove");
+// task 3
+// $str = "p";
+// if ($str===strtolower($str)){
+//     echo"lower";
+// }
+// else{
+//    echo "upper";
+// }
+// task5
