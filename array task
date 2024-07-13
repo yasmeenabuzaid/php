@@ -104,3 +104,39 @@ $students = [
         $search = array_search(5,$numbers);
         echo $search;
 
+
+=================================================file 2 task======================================================================
+$cities = ["Aqaba", "Amman", "Zarqa", "Irbid"];
+foreach($cities as $element){
+    echo $element;
+
+};
+echo array_search("Aqaba", $cities);
+$arr = array_diff ($cities,["Aqaba"]);
+print_r($arr);
+print_r(array_slice($cities,0,3));
+=======================================task2=====================================
+$products = ["shampoo"=>6, "mascara"=>4, "blusher"=>8 ];
+ksort($products);//لفرز مصفوفة بناءً على مفاتيحها (keys) بالترتيب الأبجدي
+
+sort($products);// فرزها بالترتيب الأبجدي
+print_r($products);
+
+foreach($products as $c=> $pr){
+ print_r("$c","$pr");
+};
+
+
+
+==================================task4=====================================
+
+$colors= ["blue","red","yellow","green"];
+
+$result = array_map('black', $colors);
+print_r($result);
+$result2= array_filter($result, function($x){
+    return $x > 10;
+ });
+ print_r($result2);
+
+
