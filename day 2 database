@@ -1,0 +1,114 @@
+1 : SELECT * FROM employees;
+2: SELECT name, salary FROM employees;
+3:SELECT * FROM employees
+WHERE salary > 50000;
+4:SELECT * FROM employees
+WHERE name LIKE 'J%';
+5:SELECT * FROM employees
+WHERE department_id IN (1, 2, 3);
+6:SELECT * FROM employees
+ORDER BY hire_date DESC;
+7:SELECT COUNT(*) AS employee_count FROM employees;
+8:SELECT SUM(salary) AS total_salary FROM employees;
+9:SELECT AVG(salary) AS average_salary FROM employees;
+10:
+SELECT MIN(salary) AS min_salary FROM employees;
+SELECT MAX(salary) AS max_salary FROM employees;
+11:
+SELECT * FROM employees
+WHERE salary > 50000;
+SELECT department_id, AVG(salary) AS avg_salary
+FROM employees
+GROUP BY department_id
+HAVING AVG(salary) > 50000;
+12:
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    hire_date DATE,
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+
+CREATE TABLE employee_details (
+    employee_id INT PRIMARY KEY,
+    address VARCHAR(255),
+    phone_number VARCHAR(20),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id)
+);
+13:
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100)
+);
+
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100),
+    hire_date DATE,
+    department_id INT,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+14:
+CREATE TABLE students (
+    student_id INT PRIMARY KEY,
+    name VARCHAR(100)
+);
+
+CREATE TABLE courses (
+    course_id INT PRIMARY KEY,
+    course_name VARCHAR(100)
+);
+
+CREATE TABLE student_courses (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES students(student_id),
+    FOREIGN KEY (course_id) REFERENCES courses(course_id)
+);
+15:
+ALTER TABLE employees
+ADD CONSTRAINT fk_department_id
+FOREIGN KEY (department_id)
+REFERENCES departments(department_id);
+16:
+ALTER TABLE employees
+ALTER COLUMN name VARCHAR(100) NOT NULL;
+17:
+ALTER TABLE employees
+ADD CONSTRAINT unique_email UNIQUE (email);
+18:
+ALTER TABLE employees
+ADD CONSTRAINT check_salary CHECK (salary > 0);
+19:
+ALTER TABLE employees
+ALTER COLUMN status SET DEFAULT 'Active';
+20:
+CREATE TABLE departments (
+    department_id INT PRIMARY KEY,
+    department_name VARCHAR(100) NOT NULL
+);
+CREATE TABLE employees (
+    employee_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(255) UNIQUE,
+    hire_date DATE NOT NULL,
+    salary DECIMAL(10, 2) NOT NULL CHECK (salary > 0),
+    department_id INT,
+    status VARCHAR(50) DEFAULT 'Active',
+    FOREIGN KEY (department_id) REFERENCES departments(department_id)
+);
+CREATE TABLE projects (
+    project_id INT PRIMARY KEY,
+    project_name VARCHAR(100) NOT NULL
+);
+CREATE TABLE employee_projects (
+    employee_id INT,
+    project_id INT,
+    PRIMARY KEY (employee_id, project_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
+
+
