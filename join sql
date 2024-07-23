@@ -1,1 +1,99 @@
+SELECT employees.employee_id, employees.first_name, employees.last_name, departments.department_name
+FROM employees
+INNER JOIN departments ON employees.department_id = departments.department_id;
 
+
+============================================================================================
+SELECT e.employee_id, e.first_name, e.last_name, p.project_name
+FROM employees e
+LEFT JOIN projects p ON e.employee_id = p.client_id;
+========================================================================
+•	Right Join:
+o	Join departments and employees to find all departments and the employees in each department, including departments with no employees
+=========================================================================================
+SELECT e.employee_id, e.first_name, e.last_name, p.project_name
+FROM employees e
+FULL OUTER JOIN projects p ON e.employee_id = p.client_id;
+=============================================================================================
+SELECT e.employee_id, e.first_name, e.last_name, m.employee_id AS manager_id, m.first_name AS manager_first_name, m.last_name AS manager_last_name
+FROM employees e
+LEFT JOIN employees m ON e.manager_id = m.employee_id;
+
+=================================================================================================
+SELECT e.employee_id, e.first_name, e.last_name, d.department_id, d.department_name
+FROM employees e
+CROSS JOIN departments d;
+===============================================================================================
+SELECT e.employee_id, e.first_name, e.last_name, d.department_id, d.department_name
+FROM employees e
+CROSS JOIN departments d;
+
+==================================================================================================
+SELECT e.employee_id, e.first_name, e.last_name, d.department_name
+FROM employees e
+INNER JOIN departments d ON e.department_id = d.department_id;
+
+=======================================================================================================
+SELECT e.name AS employee_name, d.name AS department_name, p.name AS project_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN projects p ON e.project_id = p.project_id;
+
+========================================================================================
+
+SELECT d.name AS department_name, SUM(s.salary_amount) AS total_salary_expenditure
+FROM employees e
+JOIN salaries s ON e.employee_id = s.employee_id
+JOIN departments d ON e.department_id = d.department_id
+GROUP BY d.name;
+
+==========================================================================================
+SELECT e.name AS employee_name, p.name AS project_name, c.name AS client_name
+FROM employees e
+JOIN projects p ON e.project_id = p.project_id
+JOIN clients c ON p.client_id = c.client_id
+WHERE c.name = 'specific_client_name';
+========================================================================================
+SELECT o.order_id, c.customer_name, p.product_name
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN products p ON o.product_id = p.product_id
+WHERE p.product_name = 'specific_product_name';
+
+
+================================================================
+SELECT e.name AS employee_name, d.name AS department_name, l.location_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN locations l ON d.location_id = l.location_id;
+
+=========================================================================================================================================
+SELECT c.customer_id, c.customer_name, SUM(oi.quantity) AS total_quantity_ordered
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY c.customer_id, c.customer_name;
+
+=======================================================================================
+SELECT c.customer_id, c.customer_name, SUM(oi.quantity) AS total_quantity_ordered
+FROM orders o
+JOIN customers c ON o.customer_id = c.customer_id
+JOIN order_items oi ON o.order_id = oi.order_id
+GROUP BY c.customer_id, c.customer_name
+HAVING SUM(oi.quantity) > 100; -- Example threshold of 100 items
+
+========================================================================================
+SELECT e.name AS employee_name, 
+       p.name AS project_name,
+       p.start_date
+FROM employees e
+JOIN projects p ON e.project_id = p.project_id
+WHERE p.start_date > '2024-01-01'; -- Example date
+
+======================================================================================
+
+SELECT e.name AS employee_name, d.name AS department_name, p.name AS project_name
+FROM employees e
+JOIN departments d ON e.department_id = d.department_id
+JOIN projects p ON e.project_id = p.project_id
+ORDER BY d.name, p.name, e.name;
